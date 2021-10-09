@@ -12,7 +12,7 @@
       throw new RuntimeException("Stack empty.\n");
     LinkedList removed = this.top;
     System.out.printf("getNext() pré pop: %d\n", this.top.getNext().value);
-    this.top = this.top.getNext(); // por que isso funciona?
+    this.top = this.top.getNext(); 
     System.out.printf("getNext() pós pop: %d\n", this.top.getNext().value);
     System.out.printf("Item do topo, após remoção: %d", this.top.value);
     this.size--;
