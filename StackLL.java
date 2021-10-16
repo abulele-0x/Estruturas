@@ -1,52 +1,46 @@
 /*
  * Implementação de uma stack usando Linked List
+ * Come back to this exercise after the classes on OOP. Missing concepts to fully grasp it.
  */
 
  public class StackLL{
    //atributos
-   private LinkedList top;
-   private int size;
+   public LinkedList atual;
+   public int size = 0;
    
-   public LinkedList pop(){
+   public int pop(){
     if (this.isEmpty())
-      throw new RuntimeException("Stack empty.\n");
-    LinkedList removed = this.top;
-    System.out.printf("getNext() pré pop: %d\n", this.top.getNext().value);
-    this.top = this.top.getNext(); 
-    System.out.printf("getNext() pós pop: %d\n", this.top.getNext().value);
-    System.out.printf("Item do topo, após remoção: %d", this.top.value);
-    this.size--;
-    System.out.printf(" | Tamanho atual: %d\n\n", this.size);
-    return removed;
+      throw new RuntimeException("A fila está vazia.\n");
+    LinkedList removed = this.atual;
+    size--;
+    this.atual = this.atual.getNext();
+    return removed.value;
+    
    }
 
    public void push(int element){
-     LinkedList novo = new LinkedList(element, null);
-     if (this.isEmpty())
-     {
-      this.top = novo;
-      System.out.printf("Novo item adicionado: %d", this.top.value);
-     }
-     else
-     {
-      novo.setNext(this.top); //Entendi! O novo item aponta pro item anterior. É uma Linked List que vai ao contrário. Por isso o getNext retorna o item anterior.
-      this.top = new LinkedList();
-      this.top = novo;
-      System.out.printf("Novo item adicionado: %d", this.top.value);
-     }
-     this.size++;
-     System.out.printf(" | Tamanho atual: %d\n", this.size);
+     LinkedList newElement = new LinkedList(element, null);
+    if (this.isEmpty())
+      this.atual = newElement;
+    else
+    {
+      newElement.setNext(this.atual); //o atributo next passa a ser o objeto anterior
+      this.atual = new LinkedList();
+      this.atual = newElement; //o que apontava p/ objeto anterior, passa a apontar p/ o novo atual
+    }
+     size++;
+
    }
 
    public boolean isEmpty(){
-     return this.top == null;
+    return this.atual == null;
    }
 
 @Override
 public String toString(){
   StringBuilder sb = new StringBuilder("[");
   if (!this.isEmpty()){
-    LinkedList e = this.top;
+    LinkedList e = this.atual;
     while (e != null){
       sb.append(e.getNext());
       if (e.getNext() != null)
