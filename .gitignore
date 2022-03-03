@@ -3,3 +3,7 @@
 
 #Ignore C object files
 *.o
+
+Java/BinaryTree/.classpath
+Java/BinaryTree/.project
+Java/BinaryTree/bin/
