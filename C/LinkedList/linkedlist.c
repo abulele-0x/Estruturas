@@ -1,44 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "linkedlist.h"
 
 void add(Node *n, int value)
 {
-	//verifica se primeiro node está vazio
+	//check if last node is empty
+	Node *p = malloc(sizeof(Node));
 	Node novo = {.value = value, .next = NULL};
-	printf("Endereço novo node: %p\n\n", &novo);
-	if (n->next == NULL) 
+	*p = novo;
+	printf("Endereço novo node: %p\n\n", p);
+	
+	if(*n == NULL)
 	{
-		n->next = &novo;
-		puts("");
-		printf("***PRIMEIRO ITEM***\n");
-		printf("Endereço novo item: %p\n\n", n->next);
+		*n = *p;
 		return;
 	}
 	
-	//caso contrário, chama o getLast pra descobrir o último.
-	Node *last = getLast(n);
-	printf("\nEndereço recebido de getLast: %p\n", last);
-	printf("Último valor adicionado: %d\n", last->value);	
+	if (n->next == NULL)
+	{
+		n->next = p;
+		return;
+	}
+	
+	//otherwise, calls getLast to get a pointer to last node added to the list.
+	Node *last = getLast(n); //pointer to last node
+	last->next = p; //assigns new node's address to last node's 'next' pointer.
+
 }
 
 Node *getLast(Node *p)
 {
-	printf("\n*******************************\n");
-	printf("Dentro de getLast:\n");
-	printf("Endereço atual: %p\n\n", p);
-	printf("*******************************\n");
-
 	if (p->next == NULL) 
 	{
-		printf("\t%p é NULL\n", &(p->next));
-		printf("\tp->next offset de %ld bytes\n", p->next - p);
-		printf("*******************************\n\n");
 		return p;
 	}
-
-	printf("\n\tp não deu null, retornando endereço %p\n", &(p->next));
-	printf("*******************************\n\n");
+	
 	return getLast(p->next);
+}
+
+void printList(Node *list)
+{
+	while (list->next != NULL)
+	{
+		printf("Valor: %d\n", list->value);
+		list = list->next;
+	}
 }
 
 
