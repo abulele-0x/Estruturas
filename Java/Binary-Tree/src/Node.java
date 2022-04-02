@@ -11,6 +11,11 @@ public class Node {
 		this.id = id;
 	}
 	
+	public Node(int id)
+	{
+		this.id = id;
+	}
+	
 	public void setLeftChild(Node leftChild)
 	{
 		this.leftChild = leftChild;

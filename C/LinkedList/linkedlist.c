@@ -1,5 +1,27 @@
 #include <stdio.h>
+<<<<<<< HEAD
 #include <stdlib.h>
+=======
+<<<<<<< HEAD
+	
+typedef struct node
+{ 
+	int value;
+	node next;
+} node;
+
+int main()
+{
+	node thing = {10, NULL};
+	
+}
+
+void add(node pai, node proximo)
+{
+	
+}
+=======
+>>>>>>> a3e1bae4838ab90174bc3e280a3193b0ffb5608a
 #include "linkedlist.h"
 
 void add(Node *n, int value)
@@ -52,3 +74,4 @@ void printList(Node *list)
 
 
 
+>>>>>>> 1961c2835200600faf0a69fe8dc3637d470ecb4f
