@@ -2,30 +2,20 @@
 #include <stdlib.h>
 #include "linkedlist.h"
 
-void add(Node *n, int value)
+void add(Node **n, int value)
 {
-	//check if last node is empty
-	Node *p = malloc(sizeof(Node));
-	Node novo = {.value = value, .next = NULL};
-	*p = novo;
-	printf("Endereço novo node: %p\n\n", p);
-	
-	if(*n == NULL)
+	Node *item = malloc(sizeof(Node));
+	item->value = value;
+	item->next = NULL;
+	printf("\n\nitem alocado em: %p\n", item);
+	if (*n == NULL)
 	{
-		*n = *p;
+		*n = item;
 		return;
 	}
-	
-	if (n->next == NULL)
-	{
-		n->next = p;
-		return;
-	}
-	
-	//otherwise, calls getLast to get a pointer to last node added to the list.
-	Node *last = getLast(n); //pointer to last node
-	last->next = p; //assigns new node's address to last node's 'next' pointer.
 
+	Node *last = getLast(*n);
+	last->next = item;
 }
 
 Node *getLast(Node *p)
@@ -40,9 +30,16 @@ Node *getLast(Node *p)
 
 void printList(Node *list)
 {
-	while (list->next != NULL)
+	Node *i = list;
+	while (1)
 	{
-		printf("Valor: %d\n", list->value);
-		list = list->next;
+		if (i == NULL)
+		{
+			printf("Lista vazia.\n");
+			break;
+		}
+
+		printf("%d ", i->value);
+		i = i->next;
 	}
 }

@@ -3,6 +3,6 @@ typedef struct Node {
 	struct Node *next;
 }Node;
 
-void add(Node *n, int value);
+void add(Node **n, int value);
 Node *getLast(Node *p);
 void printList(Node *list);

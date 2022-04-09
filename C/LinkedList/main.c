@@ -4,9 +4,10 @@
 
 int main()
 {
-	Node *lista = malloc(sizeof(Node));
-	int valor = 0;
-
+	Node *node = NULL;
+	Node **lista = &node;
+	int valor;
+	printf("Endereço de *node antes do call: %p\n", node);
 	do
 	{
 		printf("Adicione um número. -1 para sair: ");
@@ -14,6 +15,7 @@ int main()
 		add(lista, valor);
 	}while (valor != -1);
 
-	printList(lista);
+	printf("Endereço de *node depois do call: %p\n", node);
+	printList(*lista);
 	return 0;
 }
