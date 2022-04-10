@@ -169,7 +169,8 @@ public int countLeftNodes()
 			
 			e = getHeight(atual.getLeftChild(), a) + 1;
 			d = getHeight(atual.getRightChild(), a) + 1;
-			return (e>d)? e: d;
+			
+			return e>d?e:d;
 		}
 		return a;
 	}
