@@ -5,18 +5,17 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BTree arvre = new BTree();
-		
+
 		insertElements(arvre);
 		arvre.printNodes();
-		
+
 		long height = arvre.getHeight();
-		
+
 		System.out.println("\nA árvore mais alta tem " + height + " de altura\n");
-		
+
 	}
-	
-	public static void teste_countLeftNodes()
-	{
+
+	public static void teste_countLeftNodes() {
 		Elemento item1 = new Elemento(1);
 		Elemento item2 = new Elemento(1);
 		Elemento item3 = new Elemento(1);
@@ -31,9 +30,9 @@ public class Main {
 		Elemento item12 = new Elemento(1);
 		Elemento item13 = new Elemento(1);
 		Elemento item14 = new Elemento(1);
-		
+
 		BTree bintree = new BTree();
-		
+
 		bintree.insertNode(20, item1);
 		bintree.insertNode(15, item2);
 		bintree.insertNode(18, item3);
@@ -48,18 +47,15 @@ public class Main {
 		bintree.insertNode(22, item12);
 		bintree.insertNode(29, item13);
 		bintree.insertNode(28, item14);
-		
-		
+
 		int left = bintree.countLeftNodes();
-		
+
 		System.out.println("Number of left nodes = " + left);
 	}
 
-	public static void insertElements(BTree tree)
-	{
-		for (int i = 0; i < 20; i++)
-		{
-			tree.insertNode((int)(Math.random() * 100));
+	public static void insertElements(BTree tree) {
+		for (int i = 0; i < 20; i++) {
+			tree.insertNode((int) (Math.random() * 100));
 		}
 	}
 }

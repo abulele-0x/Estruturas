@@ -1,35 +1,27 @@
 public class BTree {
 	private Node root;
-	
-	public BTree()
-	{
+
+	public BTree() {
 		this.root = null;
 	}
-	
-	public void insertNode(int id, Object element)
-	{
+
+	public void insertNode(int id, Object element) {
 		Node novo = new Node(id, element);
 		if (root == null)
 			root = novo;
-		else
-		{
+		else {
 			Node parent;
 			Node current = root;
-			
-			while(true)
-			{
+
+			while (true) {
 				parent = current;
-				if (id < current.getId())
-				{
+				if (id < current.getId()) {
 					current = current.getLeftChild();
-					if (current == null)
-					{
+					if (current == null) {
 						parent.setLeftChild(novo);
 						return;
 					}
-				}
-				else
-				{
+				} else {
 					current = current.getRightChild();
 					if (current == null) {
 						parent.setRightChild(novo);
@@ -37,35 +29,28 @@ public class BTree {
 					}
 				}
 			}
-			
+
 		}
-				
+
 	}
-	
-	public void insertNode(int id)
-	{
+
+	public void insertNode(int id) {
 		Node novo = new Node(id);
 		if (root == null)
 			root = novo;
-		else
-		{
+		else {
 			Node parent;
 			Node current = root;
-			
-			while(true)
-			{
+
+			while (true) {
 				parent = current;
-				if (id < current.getId())
-				{
+				if (id < current.getId()) {
 					current = current.getLeftChild();
-					if (current == null)
-					{
+					if (current == null) {
 						parent.setLeftChild(novo);
 						return;
 					}
-				}
-				else
-				{
+				} else {
 					current = current.getRightChild();
 					if (current == null) {
 						parent.setRightChild(novo);
@@ -73,86 +58,74 @@ public class BTree {
 					}
 				}
 			}
-			
+
 		}
 	}
-public int countLeftNodes()
-	{
+
+	public int countLeftNodes() {
 		Node current = root;
 		int count = 0;
-		
-		if (current.hasLeft())
-		{
+
+		if (current.hasLeft()) {
 			count += 1 + countLeftNodes(current.getLeftChild());
 		}
-		
-		if (current.hasRight())
-		{
+
+		if (current.hasRight()) {
 			count += countLeftNodes(current.getRightChild());
 		}
-		
+
 		return count;
-		
+
 	}
-	
-	private int countLeftNodes(Node atual)
-	{
+
+	private int countLeftNodes(Node atual) {
 		Node current = atual;
 		int count = 0;
-		
-		if (current.hasLeft())
-		{
+
+		if (current.hasLeft()) {
 			count += 1 + countLeftNodes(current.getLeftChild());
 		}
-		
-		if (current.hasRight())
-		{
+
+		if (current.hasRight()) {
 			count += countLeftNodes(current.getRightChild());
 		}
-		
+
 		return count;
-			
+
 	}
-	
-	public void printNodes()
-	{
+
+	public void printNodes() {
 		Node current = root;
 		int count = 1;
-		
+
 		System.out.println(current.getId());
-		
-		if (current.hasLeft())
-		{
-			printNodes(current.getLeftChild(),count);
+
+		if (current.hasLeft()) {
+			printNodes(current.getLeftChild(), count);
 		}
-		
-		if (current.hasRight())
-		{
+
+		if (current.hasRight()) {
 			printNodes(current.getRightChild(), count);
 		}
-		
-		
+
 	}
-	
+
 	private void printNodes(Node atual, int count)
 
 	{
 		Node current = atual;
-		
-		for (int i = 0; i < count; i++)
-		{
+
+		for (int i = 0; i < count; i++) {
 			System.out.printf("  ");
 		}
 		System.out.println(current.getId());
-		
-		if (current.hasLeft())
-		{
-			printNodes(current.getLeftChild(),count+1);
+
+		if (current.hasLeft()) {
+			printNodes(current.getLeftChild(), count + 1);
 		}
-		
-		if (current.hasRight())
-		{
-			printNodes(current.getRightChild(), count+1);
+
+		if (current.hasRight()) {
+			printNodes(current.getRightChild(), count + 1);
 		}
 	}
 
@@ -160,17 +133,15 @@ public int countLeftNodes()
 		long a = 0;
 		return getHeight(root, a);
 	}
-	
-	private long getHeight(Node atual, long a)
-	{
-		if (atual != null)
-		{
-			long e,d;
-			
+
+	private long getHeight(Node atual, long a) {
+		if (atual != null) {
+			long e, d;
+
 			e = getHeight(atual.getLeftChild(), a) + 1;
 			d = getHeight(atual.getRightChild(), a) + 1;
-			
-			return e>d?e:d;
+
+			return e > d ? e : d;
 		}
 		return a;
 	}

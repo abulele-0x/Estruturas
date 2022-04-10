@@ -1,55 +1,51 @@
-
 public class Node {
 	private int id;
 	private Object value;
 	private Node leftChild;
 	private Node rightChild;
-	
-	public Node(int id, Object value)
-	{
+
+	public Node(int id, Object value) {
 		this.value = value;
 		this.id = id;
 	}
-	
-	public Node(int id)
-	{
+
+	public Node(int id) {
 		this.id = id;
 	}
-	
-	public void setLeftChild(Node leftChild)
-	{
+
+	public void setLeftChild(Node leftChild) {
 		this.leftChild = leftChild;
 	}
-	public void setRightChild(Node rightChild)
-	{
+
+	public void setRightChild(Node rightChild) {
 		this.rightChild = rightChild;
 	}
-	public Node getLeftChild()
-	{
+
+	public Node getLeftChild() {
 		return this.leftChild;
 	}
-	public Node getRightChild()
-	{
+
+	public Node getRightChild() {
 		return this.rightChild;
 	}
-	public Object getValue()
-	{
+
+	public Object getValue() {
 		return this.value;
 	}
-	public void setValue(Object value)
-	{
+
+	public void setValue(Object value) {
 		this.value = value;
 	}
-	public int getId()
-	{
+
+	public int getId() {
 		return this.id;
 	}
-	public boolean hasLeft()
-	{
+
+	public boolean hasLeft() {
 		return this.getLeftChild() != null;
 	}
-	public boolean hasRight()
-	{
+
+	public boolean hasRight() {
 		return this.getRightChild() != null;
-	}	
+	}
 }
